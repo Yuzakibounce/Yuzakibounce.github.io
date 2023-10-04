@@ -1,105 +1,86 @@
-# [Square Zero - Dark and Elegant Blog](https://squarezero.github.io/)
+[DEMO](https://tsjensen.github.io/fuse-core/)
 
-## [Based off Start Bootstrap - Clean Blog](https://startbootstrap.com/template-overviews/clean-blog/) - Official Jekyll Version
-[Clean Blog](http://startbootstrap.com/template-overviews/clean-blog/) is a stylish, responsive blog theme for [Bootstrap](http://getbootstrap.com/) created by [Start Bootstrap](http://startbootstrap.com/). This theme features a blog homepage, about page, contact page, and an example post page along with a working contact form powered by [Formspree](https://formspree.io/).
+# Fuse Core
 
-This repository holds the official Jekyll version of Square Zero!
+**A lightweight Jekyll theme for single-page personal websites.**
 
-## Preview
+[![Screenshot](README.pic1.jpg)](https://tsjensen.github.io/fuse-core/)
 
-[![Clean Blog (Jekyll) Preview](https://startbootstrap.com/assets/img/templates/clean-blog.jpg)](http://blackrockdigital.github.io/startbootstrap-clean-blog-jekyll/)
+This [Jekyll](https://jekyllrb.com/) theme is for you if you need a personal website that simply
+summarizes the links to your social media profiles and external content.
 
-<img src="https://i.imgur.com/LLwpiPS.png" width="300">
+- *responsive* - adapts to all screen sizes
+- *mobile-friendly*
+- *lightweight* - no JavaScript (except for Google Analytics, if enabled)
+- *easy to configure* - no HTML knowledge required, just change *_config.yml* ([step-by-step guide](https://github.com/tsjensen/fuse-core/wiki/Setup-Instructions))
+- *fast* - All third party components loaded via their CDN (with
+  [subresource integrity](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity)),
+  so most resources are already cached from visits to other websites.
+- Optional Google Analytics support, with IP anonymization and cookie consent popup
+  (optional, but these things are helpful to comply with EU data protection laws).
+  You'll need to have a Google Analytics account set up for this to work, of course.  
+  We even generate statistics on how often people click on your specific social media links, for example:  
+  ![GA Outbound Stats](README.pic2.png)
 
-## Installation & Setup
 
-### Using RubyGems:
+## Performance Hint
 
-When installing the theme using RubyGems, demo images, posts, and pages are not included. Follow the instructions below for complete setup.
+It is a good idea to increase the cache lifetime of the background image, so that public proxies and users' browsers
+do not need to download it every time. GitHub Pages does not support cache control, but if *your* web server supports
+`.htaccess` files, you may want to add one to the *images* folder like so:
 
-1. (Optional) Create a new Jekyll site: `jekyll new my-site`
-2. Replace the current theme in your `Gemfile` with `gem "jekyll-theme-clean-blog"`.
-3. Install the theme: `bundle install`
-4. Replace the current theme in your `_config.yml` file with `theme: jekyll-theme-awesome`.
-5. Build your site: `bundle exec jekyll serve`
-
-Assuming there are no errors and the site is building properly, follow these steps next:
-
-1. Create the following pages if they do not exist already (or change the extension of exsiting markdown files from `.md` to `.html`):
-   - `index.html` - set to `layout: home`
-   - `about.html` - set to `layout: page`
-   - `contact.html` - set to `layout: page`
-   - `posts/index.html` - set to `layout: page` (you will also need to create a `posts` directory)
-2. Configure the `index.html` front matter. Example:
-```
----
-layout: home
-background: '/PATH_TO_IMAGE'
----
-```
-3. Configure the `about.html`, `contact.html`, and `posts/index.html` front matter. Example:
-```
----
-layout: page
-title: Page Title
-description: This is the page description.
-background: '/PATH_TO_IMAGE'
----
-```
-4. For each post in the `_posts` directory, update the front matter. Example:
-```
----
-layout: post
-title: "Post Title"
-subtitle: "This is the post subtitle."
-date: YYYY-MM-DD HH:MM:SS
-background: '/PATH_TO_IMAGE'
----
+```ApacheConf
+# Cache the large background image for 1 year
+<IfModule mod_headers.c>
+    <Files "background.jpg">
+        Header unset ETag
+        Header set Cache-Control "public, max-age=31536000"
+    </Files>
+</IfModule>
 ```
 
-For reference, look at the [demo repository](https://github.com/BlackrockDigital/startbootstrap-clean-blog-jekyll) to see how the files are set up.
+
+## License
+
+The *Fuse Core* theme is free to use and modify under the terms of the
+[CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/) license.
+
+## Ancestry
+
+The visual design for this theme is heavily inspired by [Dashingcode](https://github.com/dashingcode)'s
+[front-cover](https://github.com/dashingcode/front-cover). Big thank you, it looks awesome!
+
+However, *Fuse Core* is a complete reimplementation, which makes it very different on the inside.
+There are many improvements big and small over front-cover, making *Fuse Core* a kind of "front-cover 2.0" or
+"front-cover Plus":
+
+- Complete configuration via *_config.yml*, including order of links or adding of new links.
+- Ability to show extra HTML below the links, for any crisp statement that you deem necessary to add.
+- Use of Bootstrap for responsive design. This gives us supreme browser compatibility and ease of maintenance,
+  because a myriad of problems are already handled by the folks at Bootstrap.
+- [SASS](https://sass-lang.com/) styling instead of raw CSS
+- Up-to-date libraries, especially Font Awesome&nbsp;5.
+- Support for [Google Analytics ](https://analytics.google.com/analytics/web/), including tracking of outbound links
+  (so you'll know which social media profiles people clicked on), and some legal details such as IP anonymization
+  and cookie consent popup (all optional).
+- Search engine control via configurable meta tags
+- Responsive sticky footer
 
 
-5. Build your site: `bundle exec jekyll serve`
+## Credits
 
-### Using Core Files
+This theme draws upon the following work by others:
 
-When using the core files, the demo images, posts, and pages are all included with the download. After following the instructions below, you can then go and change the content of the pages and posts.
-
-1. [Download](https://github.com/BlackrockDigital/startbootstrap-clean-blog-jekyll/archive/master.zip) or Clone the repository.
-2. Update the following configuration settings in your `_config.yml` file:
-   - `baserul`
-   - `url`
-   - `title`
-   - `email` (after setting this setting to a working email address, fill out the form on the contact page and send it - then check your email and verify the address and the form will send you messages when used)
-   - `description`
-   - `author`
-   - `twitter_username` (Optional)
-   - `facebook_username` (Optional)
-   - `github_username` (Optional)
-3. Build your site: `bundle exec jekyll serve`
-
-## Bugs and Issues
-
-Please credit the thumbnail artists if you do use others' work.
-Have a bug or an issue with this template? [Open a new issue](https://github.com/BlackrockDigital/startbootstrap-clean-blog-jekyll/issues) here on GitHub!
-
-## About
-
-Start Bootstrap is an open source library of free Bootstrap templates and themes. All of the free templates and themes on Start Bootstrap are released under the MIT license, which means you can use them for any purpose, even for commercial projects.
-
-* https://startbootstrap.com
-* https://twitter.com/SBootstrap
-
-Start Bootstrap was created by and is maintained by **[David Miller](http://davidmiller.io/)**, Owner of [Blackrock Digital](http://blackrockdigital.io/).
-
-* http://davidmiller.io
-* https://twitter.com/davidmillerskt
-* https://github.com/davidtmiller
-
-Square Zero Theme built by [surajk95](https://github.com/surajk95).
-Start Bootstrap is based on the [Bootstrap](http://getbootstrap.com/) framework created by [Mark Otto](https://twitter.com/mdo) and [Jacob Thorton](https://twitter.com/fat).
-
-## Copyright and License
-
-Copyright 2013-2018 Blackrock Digital LLC. Code released under the [MIT](https://github.com/BlackrockDigital/startbootstrap-clean-blog-jekyll/blob/gh-pages/LICENSE) license.
+- Visual appearance from the [front-cover](https://github.com/dashingcode/front-cover) theme by Dashingcode under
+  [MIT license](https://github.com/dashingcode/front-cover/blob/5fb173ed1b130a1414b8f839feea6d4e97cbd9b4/LICENSE).
+- All icons are provided by [Font Awesome](https://fontawesome.com/) under
+  [SIL OFL](https://fontawesome.com/license) license.  
+  The [star icon](https://fontawesome.com/icons/star?style=solid) used as dummy favicon is provided
+  by Font Awesome under [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/) license.
+- The [background image](https://pxhere.com/en/photo/792989) is used under
+  [CC0 Public Domain](https://creativecommons.org/publicdomain/zero/1.0/) license.
+- The [Open Sans](https://fonts.google.com/specimen/Open+Sans) font by Steve Matteson is used under
+  [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0) license.
+- The [Bootstrap](https://getbootstrap.com/) framework is used under
+  [MIT](https://github.com/twbs/bootstrap/blob/9c469cd0e8abaac19c163622ed68b6783dfa366c/LICENSE) license.
+- The [dummy avatar image](images/avatar.svg) was generated using [TinyGraphs](http://www.tinygraphs.com/).
